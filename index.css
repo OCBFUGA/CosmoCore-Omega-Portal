@@ -54,8 +54,8 @@ nav {
     align-items: center;
     padding: 1.5rem 5%;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
@@ -78,7 +78,26 @@ nav {
 .nav-links {
     display: flex;
     gap: 30px;
+    align-items: center;
     list-style: none;
+}
+
+.btn-audio {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: #888;
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-audio:hover {
+    border-color: var(--primary);
+    color: #fff;
 }
 
 .nav-links a {
@@ -124,8 +143,8 @@ nav {
 /* --- [ 🛰️ THE MASTER CHAT CONSOLE ] --- */
 .neural-lab {
     background: var(--surface);
-    backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 30px;

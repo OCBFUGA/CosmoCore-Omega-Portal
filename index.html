@@ -20,6 +20,7 @@
         <ul class="nav-links">
             <li><a href="#neural-lab">NEURAL CORE</a></li>
             <li><a href="#telemetry">TELEMETRIA</a></li>
+            <li><button id="audio-toggle" class="btn-audio">🔈 AUDIO: OFF</button></li>
             <li><a href="https://github.com/OCBFUGA/CosmoCore-Omega-Portal" target="_blank" rel="noopener">SOURCE</a>
             </li>
             <li><a href="OMNI_WHITEPAPER.md" class="btn-primary">WHITEPAPER</a></li>
@@ -39,7 +40,7 @@
                     <div class="pulse-dot"></div>
                     <span>GOLIATH 7B ACTIVE</span>
                 </div>
-                <div class="status-indicator" style="color: #666;">
+                <div class="status-indicator oracle-status">
                     <span>ORACLE: ONLINE</span>
                 </div>
             </div>
@@ -106,10 +107,12 @@
             oracleSocket = new WebSocket(`ws://${ORACLE_IP}:8765`);
             oracleSocket.onopen = () => {
                 document.getElementById('chat-output').innerHTML = "[ SYSTEM: NEXUS ACTIVE | GOLIATH PRONTO ]";
+                playBeep(660, 0.2);
             };
             oracleSocket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
                 if (data.thought) {
+                    playBeep(440, 0.3);
                     const chatOut = document.getElementById('chat-output');
                     chatOut.innerHTML += `<div class="goliath-msg"><b>GOLIATH ÔMEGA:</b> ${data.thought}</div>`;
                     chatOut.scrollTop = chatOut.scrollHeight;
@@ -125,12 +128,27 @@
             const input = document.getElementById('neural-input');
             const cmd = input.value;
             if (cmd && oracleSocket && oracleSocket.readyState === WebSocket.OPEN) {
+                playBeep(880, 0.1);
                 const chatOut = document.getElementById('chat-output');
                 chatOut.innerHTML += `<div class="user-msg"><b>COMMAND:</b> ${cmd}</div>`;
                 oracleSocket.send(JSON.stringify({ command: cmd }));
                 input.value = '';
             }
         }
+
+        // Audio Toggle Logic
+        document.getElementById('audio-toggle').addEventListener('click', () => {
+            if (!audioCtx) initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+                document.getElementById('audio-toggle').innerHTML = "🔊 AUDIO: ON";
+                document.getElementById('audio-toggle').style.color = "#00f3ff";
+            } else {
+                audioCtx.suspend();
+                document.getElementById('audio-toggle').innerHTML = "🔈 AUDIO: OFF";
+                document.getElementById('audio-toggle').style.color = "#888";
+            }
+        });
 
         // Enter to Send
         document.getElementById('neural-input').addEventListener('keypress', (e) => {
