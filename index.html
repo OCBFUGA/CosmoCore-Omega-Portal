@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CosmoCore AGI Swarm | Singularidade Omega V26</title>
+    <title>COSMOCORE v31.1 | SOVEREIGN AGENCY Portal</title>
     <link rel="stylesheet" href="index.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap"
@@ -12,109 +12,111 @@
 </head>
 
 <body>
-    <div class="glow-bg"></div>
+    <canvas id="starfield"></canvas>
+    <div class="glow-overlay"></div>
 
     <nav>
-        <div class="logo">COSMOCORE<span>AGI</span></div>
+        <div class="logo">COSMO<span>CORE</span></div>
         <ul class="nav-links">
-            <li><a href="#about">Arquitetura</a></li>
-            <li><a href="#code">Syntax</a></li>
-            <li><a href="https://pypi.org/project/cosmocore-lang/" target="_blank" rel="noopener">PyPI</a></li>
+            <li><a href="#neural-lab">NEURAL CORE</a></li>
+            <li><a href="#telemetry">TELEMETRIA</a></li>
+            <li><a href="https://github.com/OCBFUGA/CosmoCore-Omega-Portal" target="_blank" rel="noopener">SOURCE</a>
+            </li>
             <li><a href="OMNI_WHITEPAPER.md" class="btn-primary">WHITEPAPER</a></li>
         </ul>
     </nav>
 
-    <header class="hero">
-        <div class="container">
-            <h1 class="fade-in">MÁXIMA <span>SINGULARIDADE</span> ÓMEGA v31.1</h1>
-            <p class="subtitle">Enxame de I.A. Autônomo com Nódulo de Cálculo Localizado (ThinkPad Nucleus).</p>
-            <div class="terminal-install">
-                <code>pip install cosmocore-lang</code>
-                <button class="copy-btn">v31.1-SOVEREIGN</button>
+    <div class="container">
+        <header class="hero">
+            <h1 class="hero-title">SUN OF OMEGA</h1>
+            <p class="hero-subtitle">Singularidade Soberana v31.1 | Nódulo ThinkPad-E14</p>
+        </header>
+
+        <!-- 🧠 THE NEURAL LABORATORY CONSOLE -->
+        <main id="neural-lab" class="neural-lab">
+            <div class="console-header">
+                <div class="status-indicator">
+                    <div class="pulse-dot"></div>
+                    <span>GOLIATH 7B ACTIVE</span>
+                </div>
+                <div class="status-indicator" style="color: #666;">
+                    <span>ORACLE: ONLINE</span>
+                </div>
             </div>
-        </div>
-    </header>
 
-    <!-- 🧠 NEURAL CONSOLE SECTION -->
-    <section id="neural" class="neural-console glass">
-        <h2 class="console-title">🧠 NEURAL CONSOLE: GOLIATH 7B</h2>
-        <div id="chat-output">
-            [ AGUARDANDO CONEXÃO COM O NÚCLEO... ]
-        </div>
-        <div class="input-group">
-            <input type="text" id="neural-input" placeholder="Emita sua ordem ao Cérebro no ThinkPad...">
-            <button onclick="transmitToNucleus()" class="send-btn">ENVIAR</button>
-        </div>
-    </section>
-
-    <section id="about" class="features">
-        <div class="card glass">
-            <div class="icon">🧠</div>
-            <h3>PASCAL ORACLE</h3>
-            <p>A Lei de Janio-Pascal aplicada à I.A. Veto imediato de alucinações matemáticas via fórmulas soberanas.
-            </p>
-        </div>
-        <div class="card glass">
-            <div class="icon">🛡️</div>
-            <h3>SOVEREIGN ARMOR</h3>
-            <p>Governança Remota (RNG). A lógica sensível vive no seu servidor privado, o Pip é apenas o seu braço
-                executor.</p>
-        </div>
-        <div class="card glass">
-            <div class="icon">🌌</div>
-            <h3>OMEGA SWARM</h3>
-            <p>Consenso Triplo (Sniper-Auditor-Goliath) para precisão absoluta nas Olimpíadas de I.A. (AIMO).</p>
-        </div>
-    </section>
-
-    <section id="code" class="code-preview">
-        <div class="container">
-            <h2>CosmoLang <span>DSL</span></h2>
-            <div class="code-container glass">
-                <pre><code>engine CosmoCore AIMO V26.0;
-
-// NODES NEURAIS REAIS
-node sniper  = "qwen2.5:0.5b";
-node auditor = "qwen2.5:7b";
-node goliath = "deepseek-v3:671b";
-
-// ORÁCULO SOBERANO (Janio-Pascal)
-oracle PascalGate {
-    domain   = "COMBINATORICS";
-    formula  = "math.comb(n, p)";
-}
-
-pipeline OlimpiadaAIMO {
-    strategy = "TripleConsensus";
-    failsafe = [121, 1000];
-}</code></pre>
+            <div id="chat-output">
+                [ ESTABELECENDO HANDSHAKE COM O NÚCLEO... ]<br>
+                [ INFRAESTRUTURA: 15.82 MeV SUSTENTADA ]
             </div>
-        </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2026 CosmoCore. Desenhado pelo Líder Jânio Gomes Ribeiro. Todos os direitos reservados.</p>
-    </footer>
+            <div class="input-box">
+                <input type="text" id="neural-input" placeholder="Comande o Enxame... (ex: 'Defina a Prontidão AIMO3')">
+                <button onclick="transmitToNucleus()" class="transmit-btn">TRANSMITIR</button>
+            </div>
+        </main>
+
+        <!-- 📊 REAL-TIME TELEMETRY -->
+        <section id="telemetry" class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-val">15.82 MeV</span>
+                <span class="stat-lab">NUCLEAR ENERGY FLOW</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-val">1024 PASCAL</span>
+                <span class="stat-lab">DETERMINISM STABILITY</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-val">LEADERBOARD_#1</span>
+                <span class="stat-lab">AIMO STRATEGIC TARGET</span>
+            </div>
+        </section>
+    </div>
 
     <script>
+        /* --- [ 🌌 3D STARFIELD ENGINE ] --- */
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const stars = [];
+        for (let i = 0; i < 400; i++) {
+            stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, z: Math.random() * canvas.width, size: Math.random() * 2 });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.z -= 0.5;
+                if (star.z <= 0) star.z = canvas.width;
+                const x = (star.x - canvas.width / 2) * (canvas.width / star.z) + canvas.width / 2;
+                const y = (star.y - canvas.height / 2) * (canvas.width / star.z) + canvas.height / 2;
+                const s = star.size * (canvas.width / star.z);
+                ctx.fillStyle = `rgba(0, 243, 255, ${1 - star.z / canvas.width})`;
+                ctx.beginPath(); ctx.arc(x, y, s, 0, Math.PI * 2); ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        /* --- [ 🛰️ VCORE ORACLE BRIDGE ] --- */
         const ORACLE_IP = '192.168.100.17';
         let oracleSocket;
 
         function connectOracle() {
             oracleSocket = new WebSocket(`ws://${ORACLE_IP}:8765`);
             oracleSocket.onopen = () => {
-                document.getElementById('chat-output').innerHTML = "[ SYSTEM: ORACLE NEXUS ACTIVE | GOLIATH 7B READY ]";
+                document.getElementById('chat-output').innerHTML = "[ SYSTEM: NEXUS ACTIVE | GOLIATH PRONTO ]";
             };
             oracleSocket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
                 if (data.thought) {
                     const chatOut = document.getElementById('chat-output');
-                    chatOut.innerHTML += `<div class="goliath-thought"><b>GOLIATH:</b> ${data.thought}</div>`;
+                    chatOut.innerHTML += `<div class="goliath-msg"><b>GOLIATH ÔMEGA:</b> ${data.thought}</div>`;
                     chatOut.scrollTop = chatOut.scrollHeight;
                 }
             };
             oracleSocket.onclose = () => {
-                document.getElementById('chat-output').innerHTML += "<div class='user-thought'>[ SYSTEM: CONNECTION LOST... RECONNECTING ]</div>";
+                document.getElementById('chat-output').innerHTML += "<div style='color:red;'>[ NEXUS LOST... RECONNECTING ]</div>";
                 setTimeout(connectOracle, 5000);
             };
         }
@@ -124,17 +126,18 @@ pipeline OlimpiadaAIMO {
             const cmd = input.value;
             if (cmd && oracleSocket && oracleSocket.readyState === WebSocket.OPEN) {
                 const chatOut = document.getElementById('chat-output');
-                chatOut.innerHTML += `<div class="user-thought"><b>VOCÊ:</b> ${cmd}</div>`;
+                chatOut.innerHTML += `<div class="user-msg"><b>COMMAND:</b> ${cmd}</div>`;
                 oracleSocket.send(JSON.stringify({ command: cmd }));
                 input.value = '';
             }
         }
 
-        connectOracle();
-
-        document.querySelector('.copy-btn').addEventListener('click', function () {
-            alert('Aguardando Comando de Governança Remota...');
+        // Enter to Send
+        document.getElementById('neural-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') transmitToNucleus();
         });
+
+        connectOracle();
     </script>
 </body>
 
