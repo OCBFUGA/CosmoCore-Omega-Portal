@@ -19,22 +19,33 @@
         <ul class="nav-links">
             <li><a href="#about">Arquitetura</a></li>
             <li><a href="#code">Syntax</a></li>
-            <li><a href="https://pypi.org/project/cosmocore-lang/" target="_blank">PyPI</a></li>
+            <li><a href="https://pypi.org/project/cosmocore-lang/" target="_blank" rel="noopener">PyPI</a></li>
             <li><a href="OMNI_WHITEPAPER.md" class="btn-primary">WHITEPAPER</a></li>
         </ul>
     </nav>
 
     <header class="hero">
         <div class="container">
-            <h1 class="fade-in">MÁXIMA <span>SINGULARIDADE</span> ÓMEGA</h1>
-            <p class="subtitle">O Primeiro Motor de Enxame de I.A. Autônomo Governado por Leis de Combinatória
-                Determinística.</p>
+            <h1 class="fade-in">MÁXIMA <span>SINGULARIDADE</span> ÓMEGA v31.1</h1>
+            <p class="subtitle">Enxame de I.A. Autônomo com Nódulo de Cálculo Localizado (ThinkPad Nucleus).</p>
             <div class="terminal-install">
                 <code>pip install cosmocore-lang</code>
-                <button class="copy-btn">v26.0</button>
+                <button class="copy-btn">v31.1-SOVEREIGN</button>
             </div>
         </div>
     </header>
+
+    <!-- 🧠 NEURAL CONSOLE SECTION -->
+    <section id="neural" class="neural-console glass">
+        <h2 class="console-title">🧠 NEURAL CONSOLE: GOLIATH 7B</h2>
+        <div id="chat-output">
+            [ AGUARDANDO CONEXÃO COM O NÚCLEO... ]
+        </div>
+        <div class="input-group">
+            <input type="text" id="neural-input" placeholder="Emita sua ordem ao Cérebro no ThinkPad...">
+            <button onclick="transmitToNucleus()" class="send-btn">ENVIAR</button>
+        </div>
+    </section>
 
     <section id="about" class="features">
         <div class="card glass">
@@ -86,6 +97,41 @@ pipeline OlimpiadaAIMO {
     </footer>
 
     <script>
+        const ORACLE_IP = '192.168.100.17';
+        let oracleSocket;
+
+        function connectOracle() {
+            oracleSocket = new WebSocket(`ws://${ORACLE_IP}:8765`);
+            oracleSocket.onopen = () => {
+                document.getElementById('chat-output').innerHTML = "[ SYSTEM: ORACLE NEXUS ACTIVE | GOLIATH 7B READY ]";
+            };
+            oracleSocket.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                if (data.thought) {
+                    const chatOut = document.getElementById('chat-output');
+                    chatOut.innerHTML += `<div class="goliath-thought"><b>GOLIATH:</b> ${data.thought}</div>`;
+                    chatOut.scrollTop = chatOut.scrollHeight;
+                }
+            };
+            oracleSocket.onclose = () => {
+                document.getElementById('chat-output').innerHTML += "<div class='user-thought'>[ SYSTEM: CONNECTION LOST... RECONNECTING ]</div>";
+                setTimeout(connectOracle, 5000);
+            };
+        }
+
+        function transmitToNucleus() {
+            const input = document.getElementById('neural-input');
+            const cmd = input.value;
+            if (cmd && oracleSocket && oracleSocket.readyState === WebSocket.OPEN) {
+                const chatOut = document.getElementById('chat-output');
+                chatOut.innerHTML += `<div class="user-thought"><b>VOCÊ:</b> ${cmd}</div>`;
+                oracleSocket.send(JSON.stringify({ command: cmd }));
+                input.value = '';
+            }
+        }
+
+        connectOracle();
+
         document.querySelector('.copy-btn').addEventListener('click', function () {
             alert('Aguardando Comando de Governança Remota...');
         });
