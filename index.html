@@ -136,7 +136,23 @@
             }
         }
 
-        // Audio Toggle Logic
+        function initAudio() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            const filter = audioCtx.createBiquadFilter();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(54, audioCtx.currentTime);
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(60, audioCtx.currentTime);
+            g.gain.setValueAtTime(0.01, audioCtx.currentTime);
+            osc.connect(filter);
+            filter.connect(g);
+            g.connect(audioCtx.destination);
+            osc.start();
+            droneOsc = osc; droneGain = g;
+        }
+
         document.getElementById('audio-toggle').addEventListener('click', () => {
             if (!audioCtx) initAudio();
             if (audioCtx.state === 'suspended') {
