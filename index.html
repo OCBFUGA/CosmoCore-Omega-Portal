@@ -43,6 +43,9 @@
                 <div class="status-indicator oracle-status">
                     <span>ORACLE: ONLINE</span>
                 </div>
+                <div class="status-indicator sentinel-active">
+                    <span id="sentinel-status" style="color: #00ff00;">🛡️ SENTINELA: ATIVA</span>
+                </div>
             </div>
 
             <div id="chat-output">
@@ -106,11 +109,16 @@
         function connectOracle() {
             oracleSocket = new WebSocket(`ws://${ORACLE_IP}:8765`);
             oracleSocket.onopen = () => {
-                document.getElementById('chat-output').innerHTML = "[ SYSTEM: NEXUS ACTIVE | GOLIATH PRONTO ]";
+                document.getElementById('chat-output').innerHTML = "[ SYSTEM: NEXUS ACTIVE | SENTINELA MONITORANDO IP ]";
                 playBeep(660, 0.2);
             };
             oracleSocket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
+                if (data.type === 'security_alert') {
+                    document.getElementById('sentinel-status').innerHTML = "⚠️ INTRUSÃO DETECTADA!";
+                    document.getElementById('sentinel-status').style.color = "red";
+                    playBeep(220, 1.0); // Harsh Warning Tone
+                }
                 if (data.thought) {
                     playBeep(440, 0.3);
                     const chatOut = document.getElementById('chat-output');
